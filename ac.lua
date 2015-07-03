@@ -17,7 +17,6 @@
 
 local varutil = require("lib.varutil")
 local erro = require("lib.erro")
-local parser = require("parser")
 local mysql_wrapper = require("lib.mysql_wrapper")
 local permission = require("lib.permission")
 local permission_db = require("lib.permission_db")
@@ -49,6 +48,10 @@ local mysql_timeout = ngx.var.edo_mysql_timeout or 30 * 1000 -- 30 秒。
 local mysql_keepalive = ngx.var.edo_mysql_keepalive or 60 * 1000 -- 1 分。
 -- $edo_mysql_pool_size: 1 ワーカー当たりの mysql ソケット確保数。
 local mysql_pool_size = ngx.var.edo_mysql_pool_size or 16
+
+-- $edo_lib_parser: リクエストからリソースとアクセス元を特定するモジュール名。
+local lib_parser = ngx.var.edo_parser or "parser_sample"
+local parser = require(lib_parser)
 
 
 -- ここから本編。

@@ -64,12 +64,6 @@ local function parse_sample(prefix)
 end
 
 
--- edo-auth の TA 間連携代行機能を通過したリクエストから特定する。
-local function parse_edo_auth(prefix)
-   return nil, nil, nil, nil, nil, 'not yet implemented'
-end
-
-
 return {
    parse = parse_sample,
 }
